@@ -8,12 +8,20 @@ html {
   block-size: 100%;
 }
 
+.body {
+  margin: 0;
+  min-height: 100vh; /* страница всегда минимум на весь экран */
+  display: flex;
+  justify-content: center; /* центрируем контент по горизонтали */
+  align-items: center;
+  background-color: #fff; /* фон страницы, чтобы было видно отступы */
+}
 .page {
-  inline-size: 1200px;
-  block-size: 100%;
-  margin: auto;
+  width: 100%;
+  max-width: 1140px; /* ограничение ширины */
+  margin: 133px 30px; /* отступы сверху/снизу и слева/справа */
   color: #fff;
-  font-family: 'Fira Sans Condensed', sans-serif;
+  font-family: "Fira Sans Condensed", sans-serif;
   font-size: 18px;
   background-color: #1b1919;
 }
@@ -47,5 +55,265 @@ ol {
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background-color: #D9D9D9;
+  background-color: #d9d9d9;
+}
+/*Общие настройки блока с видео*/
+.content {
+  display: flex;
+  position: relative;
+  flex-direction: row; /*Расположили эл-ты в строку*/
+  align-content: end; /*Прижали элементы контейнера к низу по верт оси */
+  width: 1140px;
+  gap: 30px; /*Отсутуп между элементами*/
+}
+/*Блок с видео*/
+.result {
+  padding-top: 78px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.result__video-container {
+  margin-bottom: 16px;
+  width: 711px;
+  height: 386px;
+  position: relative;
+}
+
+.result__video {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+
+/*Форма под видео, с чекбоксами*/
+.search-form {
+  display: flex;
+  gap: 40px;
+  align-items: start;
+  position: relative;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.visually-hidden {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/*Поиск по городам*/
+.search-form__fieldset .search-form__fieldset-title {
+  font-size: 18px;
+  font-weight: 400;
+  padding-bottom: 5px;
+}
+
+.search-form__label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: fit-content;
+  gap: 5px;
+}
+.search-form__label-text {
+  cursor: pointer;
+}
+.search-form__label:hover .search-form__label-text {
+  text-decoration: underline;
+}
+
+.search-form__label:has(.search-form__checkbox:focus-visible) {
+  outline: 1px solid #fff;
+}
+
+.search-form__checkbox-list {
+  display: flex;
+  gap: 10px;
+}
+
+.search-form__fieldset {
+  border: none;
+}
+
+.search-form__textfield {
+  background-color: transparent;
+  font-size: 18px;
+  font-weight: 400;
+  color: #fff;
+  border-top: 1px solid #fff; /* Рамка только сверху */
+  border-bottom: 1px solid #fff; /* Рамка только снизу */
+  appearance: none;
+}
+
+.search-form__textfield::placeholder {
+  color: rgb(255 255 255 / 0.7);
+}
+
+.search-form__textfield:focus {
+  outline: none;
+}
+
+.seasearch-form__label:has(:focus-visible) {
+  outline: 1px solid #fff;
+}
+
+/*оформление для псевдочекбокса*/
+.search-form__pseudo-checkbox {
+  height: 19px;
+  width: 19px;
+  border: 1px solid #fff;
+  padding: 1px;
+}
+
+.search-form__pseudo-checkbox::after {
+  content: "";
+  display: block;
+  background-color: #fff;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+
+.search-form__checkbox:checked + .search-form__pseudo-checkbox::after {
+  opacity: 1;
+}
+/*Правый блок со скроллом*/
+.content__details {
+  width: 100%;
+  height: 100%;
+  font-family: Oswald, sans-serif;
+}
+
+.title {
+  padding-bottom: 20px;
+  font-size: 75px;
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 94%;
+}
+
+.content__accent {
+  color: #545050;
+}
+
+.content__list-container {
+  height: 298px;
+  overflow-y: auto;
+  position: relative;
+}
+
+.content__list {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.content__video-card {
+  display: flex;
+  align-content: start;
+  cursor: pointer;
+}
+
+.content__card-link {
+  text-decoration: none;
+  display: block;
+  color: #ffffff;
+}
+
+.content__list-item {
+  padding-left: 3px;
+  padding-right: 3px;
+}
+/*Стилизация карточек*/
+/*.content__card-link_current {
+  В задании нужно задать цвет фона, но в макете цвета не задано
+}*/
+.content__card-link:active {
+  background-color: #545050;
+}
+.content__card-link:hover {
+  text-decoration: underline;
+}
+.content__card-link:focus {
+  outline: none;
+}
+.content__card-link:focus-visible {
+  outline: 1px solid #fff;
+}
+.content__video-card-title {
+  font-size: 30px;
+  font-weight: 700;
+  text-transform: uppercase;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 196px;
+}
+
+.content__video-card-thumbnail {
+  height: 103px;
+  min-width: 194px;
+  object-fit: cover;
+  object-position: left;
+}
+
+.content__video-card-description-container {
+  flex-grow: 1;
+  -webkit-line-clamp: 2;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  height: 103px;
+  width: 196px;
+}
+
+.content__video-card-description {
+  -webkit-line-clamp: 4;
+  line-height: 16.2px;
+  font-weight: 400;
+  font-style: normal;
+  font-family: "Fira Sans Condensed", sans-serif;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+}
+
+/*Стилизуем кнопки и их состояния*/
+.button {
+  border: 1px solid #fff;
+  color: #fff;
+  font-family: "Fira Sans Condensed", sans-serif;
+  font-style: bold;
+  font-weight: 700;
+  font-size: 18px;
+  background-color: transparent;
+  cursor: pointer;
+}
+.search-form__submit-button {
+  height: 34px;
+  width: 194px;
+  align-self: self-end;
+  margin-left: 6px;
+}
+.more-button {
+  width: 100%;
+  height: 34px;
+}
+.button:hover {
+  text-decoration: underline;
+}
+.button:active {
+  background-color: #545050;
+}
+.button:focus {
+  outline: none;
+}
+.button:focus-visible {
+  outline: 1px solid #fff;
 }
